@@ -19409,13 +19409,13 @@ var Counter = React.createClass({
 
   filterList: function (event) {
     var updatedList = this.state.initialItems;
-    updatedList = updatedList.filter(function (item33) {
-      return item33.toLowerCase().search(event.target.value.toLowerCase()) !== -1;
+    updatedList = updatedList.filter(function (item) {
+      return item.toLowerCase().search(event.target.value.toLowerCase()) !== -1;
     });
     this.setState({ items: updatedList });
   },
   getInitialState: function () {
-    return { initialItems: ["Apple", 'orange', '123c1313131313'],
+    return { initialItems: ["Apple", 'orange', 'Fruit Name'],
       items: [] };
   },
 
@@ -19437,7 +19437,13 @@ var Counter = React.createClass({
         null,
         React.createElement('input', { placeholder: 'search item', onChange: this.filterList })
       ),
-      React.createElement(List, { items: this.state.items })
+      React.createElement(List, { items: this.state.items }),
+      React.createElement(
+        'h2',
+        null,
+        'List whiout filter'
+      ),
+      React.createElement(List, { items: this.state.initialItems })
     );
   }
 });
